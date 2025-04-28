@@ -1,7 +1,8 @@
 import unittest
 
 from src.two_pointers.ListNode import ListNode
-from src.two_pointers.Solution import sort_colors, find_duplicate, circular_array_loop, count_cycle_length
+from src.two_pointers.Solution import sort_colors, find_duplicate, circular_array_loop, count_cycle_length, \
+    remove_duplicates, length_of_longest_substring, character_replacement
 
 
 class MyTestCase(unittest.TestCase):
@@ -13,10 +14,9 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(sorted_colors[i], expected_sorted_colors[i])  # add assertion here
 
     def test_find_duplicate(self):
-        dup = find_duplicate([1,3,6,2,7,3,5,4])
+        dup = find_duplicate([1, 3, 6, 2, 7, 3, 5, 4])
         expected_dup = 3
         self.assertEqual(dup, expected_dup)
-
 
     def test_circular_array_loop(self):
         nums = [3, 1, 2]
@@ -48,7 +48,33 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(length, 7)
 
+    def test_remove_duplicates(self):
+        nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+        k = remove_duplicates(nums)
 
+        expected_nums = [0, 1, 2, 3, 4, 5]
+
+        self.assertEqual(k, 5)
+
+        for i in range(0, k):
+            self.assertEqual(nums[i], expected_nums[i])
+
+
+    def test_length_of_longest_substring(self):
+        s = "abcabcbb"
+
+        res = length_of_longest_substring(self, s)
+
+        self.assertEqual(res, 3)
+
+    def test_character_replacement(self):
+
+        s = "ABAB"
+        k = 2
+
+        res = character_replacement(self, s, k)
+
+        self.assertEqual(res, 4)
 
 if __name__ == '__main__':
     unittest.main()
