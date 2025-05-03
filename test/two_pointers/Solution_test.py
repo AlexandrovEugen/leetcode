@@ -2,7 +2,8 @@ import unittest
 
 from src.two_pointers.ListNode import ListNode
 from src.two_pointers.Solution import sort_colors, find_duplicate, circular_array_loop, count_cycle_length, \
-    remove_duplicates, length_of_longest_substring, character_replacement
+    remove_duplicates, length_of_longest_substring, character_replacement, find_repeated_dna_sequences, least_interval, \
+    insert_interval
 
 
 class MyTestCase(unittest.TestCase):
@@ -75,6 +76,27 @@ class MyTestCase(unittest.TestCase):
         res = character_replacement(self, s, k)
 
         self.assertEqual(res, 4)
+
+    def test_find_repeated_dna_sequences(self):
+
+        s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+
+        res = find_repeated_dna_sequences(s)
+
+        self.assertListEqual(res, ['AAAAACCCCC', 'CCCCCAAAAA'])
+
+    def test_least_interval(self):
+
+        res = least_interval(["S","I","V","U","W","D","U","X"], 0)
+
+        self.assertEqual(res, 8)
+
+    def test_insert_interval(self):
+
+        res = insert_interval([[1, 3], [4, 5], [6, 9], [10, 17], [18, 21]], [4, 16])
+
+        self.assertEqual(res, [[1, 3], [4, 17], [18, 21]])
+
 
 if __name__ == '__main__':
     unittest.main()

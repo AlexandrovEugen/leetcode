@@ -144,3 +144,82 @@ def character_replacement(self, s: str, k: int) -> int:
 
         max_length = max(max_length, j - i + 1)
     return max_length
+
+
+def find_repeated_dna_sequences(s: str) -> list[str]:
+    seen = set()
+    repeated = set()
+
+    for i in range(len(s) - 9):  # 10-letter sequences
+        sequence = s[i:i + 10]
+        if sequence in seen:
+            repeated.add(sequence)
+        else:
+            seen.add(sequence)
+
+    return list(repeated)
+
+
+def least_interval(tasks, n):
+    freq = [0] * 26
+
+    for t in tasks:
+        freq[ord(t) - ord('A')]+=1
+
+    freq.sort(reverse=True)
+
+    max_gaps = freq[0] - 1
+    idle_slots = max_gaps * n
+
+    for i in range(1, len(freq)):
+        idle_slots -= min(freq[i], max_gaps)
+
+    idle_slots = max(0, idle_slots)
+
+    return idle_slots + len(tasks)
+
+def merge_intervals(intervals):
+    result = []
+    result.append([intervals[0][0], intervals[0][1]])
+
+    for i in range(1, len(intervals)):
+        prev = result[len(result) - 1]
+        cur = intervals[i]
+
+        if prev[1] >= cur[0]:
+            result[-1][1] = max(prev[1], cur[1])
+        else:
+            result.append(cur)
+
+    return  result
+
+def insert_interval(intervals, new_interval):
+    ns, ne = new_interval
+
+    i = 0
+    result = []
+    while i < len(intervals) and intervals[i][1] < ns:
+        result.append(intervals[i])
+        i = i + 1
+
+    result.append(new_interval)
+
+    while i < len(intervals):
+        last_i = len(result) - 1
+        os, oe = intervals[i]
+
+        ns, ne = result[last_i]
+
+        if ns <= os and ne >= oe:
+            i = i + 1
+            continue
+
+        if oe <= ns or ne >= os:
+            result[last_i] = [min(os, ns), max(oe, ne)]
+        else:
+            result.append(intervals[i])
+        i = i + 1
+    return result
+
+
+
