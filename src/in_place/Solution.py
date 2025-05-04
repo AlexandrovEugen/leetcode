@@ -86,3 +86,28 @@ def reorder_list(head):
         second.next, second = first, second.next
 
     return head
+
+
+def swap_nodes(head, k):
+    if not head:
+        return head
+
+    i = 0
+    first = end = None
+
+    cur = head
+
+    while cur:
+        i = i + 1
+        if end:
+            end = end.next
+
+        if i == k:
+            first = cur
+            end = head
+
+        cur = cur.next
+
+    first.val, end.val = end.val, first.val
+
+    return head

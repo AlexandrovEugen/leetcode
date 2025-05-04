@@ -1,7 +1,7 @@
 import unittest
 
 from src.ListNode import ListNode
-from src.in_place.Solution import swap_pair, reverse, reverse_between, reorder_list
+from src.in_place.Solution import swap_pair, reverse, reverse_between, reorder_list, swap_nodes
 
 
 def build_list_node(array: list) -> ListNode:
@@ -67,6 +67,15 @@ class MyTestCase(unittest.TestCase):
 
         self.compare_heads(expected_head, reordered_head)
 
+    def test_swap_nodes(self):
+
+        head = build_list_node([1,2, 3,4,5,6])
+
+        expected = build_list_node([1,2, 4, 3, 5, 6])
+
+        res = swap_nodes(head, 3)
+
+        self.compare_heads(res, expected)
 
 if __name__ == '__main__':
     unittest.main()
