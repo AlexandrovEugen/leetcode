@@ -179,8 +179,7 @@ def least_interval(tasks, n):
     return idle_slots + len(tasks)
 
 def merge_intervals(intervals):
-    result = []
-    result.append([intervals[0][0], intervals[0][1]])
+    result = [[intervals[0][0], intervals[0][1]]]
 
     for i in range(1, len(intervals)):
         prev = result[len(result) - 1]

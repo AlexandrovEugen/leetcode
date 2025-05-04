@@ -1,6 +1,6 @@
 import unittest
 
-from src.two_pointers.ListNode import ListNode
+from src.ListNode import ListNode
 from src.two_pointers.Solution import sort_colors, find_duplicate, circular_array_loop, count_cycle_length, \
     remove_duplicates, length_of_longest_substring, character_replacement, find_repeated_dna_sequences, least_interval, \
     insert_interval
