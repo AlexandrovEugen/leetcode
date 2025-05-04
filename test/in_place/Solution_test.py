@@ -14,7 +14,6 @@ def build_list_node(array: list) -> ListNode:
     return head.next
 
 
-
 class MyTestCase(unittest.TestCase):
 
     def compare_heads(self, actual: ListNode, expected: ListNode):
@@ -22,7 +21,6 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(actual.val, expected.val)
             actual = actual.next
             expected = expected.next
-
 
     def test_swap_pairs(self):
         head = build_list_node([1, 2, 3, 4, 5, 6, 7, 8])
@@ -51,7 +49,7 @@ class MyTestCase(unittest.TestCase):
     def test_reverse_between(self):
         head = build_list_node([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-        reversed_head = build_list_node([1, 2,  10, 9, 8, 7, 6, 5, 4, 3])
+        reversed_head = build_list_node([1, 2, 10, 9, 8, 7, 6, 5, 4, 3])
 
         res = reverse_between(head, 3, 10)
 
@@ -68,11 +66,6 @@ class MyTestCase(unittest.TestCase):
         reordered_head = reorder_list(head)
 
         self.compare_heads(expected_head, reordered_head)
-
-
-
-
-
 
 
 if __name__ == '__main__':

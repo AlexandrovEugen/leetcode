@@ -70,23 +70,18 @@ def reverse_between(head: ListNode, left: int, right: int) -> ListNode:
 def reorder_list(head):
     if not head:
         return head
-
-    slow = head
-    fast = head
+    slow = fast = head
 
     while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
+    prev, curr = None, slow
 
-    prev = None
-    cur = slow
-    while cur:
-        cur.next, prev, cur = prev, cur, cur.next
+    while curr:
+        curr.next, prev, curr = prev, curr, curr.next
+    first, second = head, prev
 
-    fisrt = head
-    second = prev
-
-    while second:
+    while second.next:
         first.next, first = second, first.next
         second.next, second = first, second.next
 
