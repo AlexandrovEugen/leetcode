@@ -1,5 +1,3 @@
-
-
 def single_non_duplicate(nums: list[int]) -> int:
     l = 0
     r = len(nums) - 1
@@ -67,5 +65,29 @@ def find_closest_elements(nums, k, target):
     return nums[window_left + 1: window_right]
 
 
+def binary_search_rotated(nums: list[int], target: int) -> int:
+    l = 0
+    r = len(nums) - 1
 
+    while l <= r:
+        m = (l + r) // 2
 
+        if nums[m] == target:
+            return m
+
+        if nums[l] <= nums[m]:
+            if nums[l] <= target < nums[m]:
+                #return binary_search(nums, low, mid - 1, target)
+                r = m - 1
+            else:
+                #return binary_search(nums, mid + 1, high, target)
+                l = m + 1
+        else:
+            if nums[m] < target <= nums[r]:
+                # return binary_search(nums, mid + 1, high, target)
+                l = m + 1
+            else:
+                # return binary_search(nums, low, mid - 1, target)
+                r = m - 1
+
+    return -1
