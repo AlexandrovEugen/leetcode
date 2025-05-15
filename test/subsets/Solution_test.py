@@ -1,5 +1,5 @@
 import unittest
-from src.subsets.Solution import permute_word
+from src.subsets.Solution import permute_word, generate_combinations
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
@@ -13,7 +13,19 @@ class MyTestCase(unittest.TestCase):
 
         expected_result = ["abcd","abdc","acbd","acdb","adbc","adcb","bacd","badc","bcad","bcda","bdac","bdca","cabd","cadb","cbad","cbda","cdab","cdba","dabc","dacb","dbac","dbca","dcab","dcba"]
 
-        self.assertSequenceEqual(result, expected_result)
+        self.assertSequenceEqual(sorted(result), sorted(expected_result))
+
+    def test_generate_combinations(self):
+
+        n = 3
+
+        expected = ["((()))","(()())","(())()","()(())","()()()"]
+
+        result = generate_combinations(n)
+
+        self.assertSequenceEqual(sorted(expected), sorted(result))
+
+
 
 
 if __name__ == '__main__':
