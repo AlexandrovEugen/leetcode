@@ -53,8 +53,13 @@ def coin_change_backtracking(coins: list[int], target: int) -> int:
     return coin_count
 
 
-def coin_change(coins, target):
-    def calculate_minimum_coins(remaining, counter)-> int:
+def coin_change(coins, total):
+    if total < 1:
+        return 0
+
+    counter = [float('inf')] * total
+
+    def calculate_minimum_coins(remaining):
         if remaining < 0:
             return -1
         if remaining == 0:
@@ -65,10 +70,10 @@ def coin_change(coins, target):
         minimum = float('inf')
 
         for c in coins:
-            result = calculate_minimum_coins(remaining - c, counter)
+            result = calculate_minimum_coins(remaining - c)
             if 0 <= result < minimum:
                 minimum = result + 1
         counter[remaining - 1] = minimum if minimum != float('inf') else -1
         return counter[remaining - 1]
 
-    return calculate_minimum_coins(target, [float('inf')] * target)
+    return calculate_minimum_coins(total)
