@@ -13,9 +13,14 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(res, 24)
 
     def test_coin_change(self):
-        res = coin_change([2,3,4,6,8], 23)
+        res = coin_change([2, 3, 4, 6, 8], 23)
 
         self.assertEqual(res, 4)
+
+    def test_can_partition_array(self):
+        res = can_partition_array([4, 1, 3])
+
+        self.assertTrue(res)
 
 
 if __name__ == '__main__':
